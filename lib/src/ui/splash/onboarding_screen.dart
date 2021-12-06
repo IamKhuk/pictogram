@@ -1,24 +1,33 @@
-import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/main_screen.dart';
 
-class OnBoardScreen extends StatefulWidget {
-  const OnBoardScreen({Key? key}) : super(key: key);
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({Key? key}) : super(key: key);
 
   @override
-  _OnBoardScreenState createState() => _OnBoardScreenState();
+  _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
 
-class _OnBoardScreenState extends State<OnBoardScreen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _pageController = PageController();
-  List<String> data = [
-    "assets/images/on_board_one.png",
-    "assets/images/on_board_two.png",
-    "assets/images/on_board_three.png",
+  List<String> _images = [
+    "assets/images/onboarding_01.png",
+    "assets/images/onboarding_02.png",
+    "assets/images/onboarding_03.png",
   ];
   int _selectedIndex = 0;
+  List<String> title = [
+    'We Connect People',
+    'Sharing Happiness',
+    'Last Long Memories',
+  ];
+  List<String> msg = [
+    'You can store memories of your photos in Zelio app without limit.',
+    'Sharing happiness by sharing your memories in Zelio platform.',
+    'You can store memories of your photos in Zelio app without limit.',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,174 +35,185 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       backgroundColor: AppTheme.white,
       body: Stack(
         children: [
-          Theme(
-            data: ThemeData(
-              platform: TargetPlatform.android,
-            ),
-            child: PageView.builder(
-              itemCount: data.length,
-              controller: _pageController,
-              onPageChanged: (_index) {
-                setState(() {
-                  _selectedIndex = _index;
-                });
-              },
-              itemBuilder: (context, index) {
-                return Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.6,
+            child: Theme(
+              data: ThemeData(
+                platform: TargetPlatform.android,
+              ),
+              child: PageView.builder(
+                itemCount: _images.length,
+                controller: _pageController,
+                onPageChanged: (_index) {
+                  setState(() {
+                    _selectedIndex = _index;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    decoration: BoxDecoration(
+                      borderRadius: _selectedIndex == 0
+                          ? BorderRadius.only(bottomLeft: Radius.circular(75))
+                          : _selectedIndex == 1
+                              ? BorderRadius.zero
+                              : BorderRadius.only(
+                                  bottomRight: Radius.circular(75)),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: _selectedIndex == 0
+                          ? BorderRadius.only(bottomLeft: Radius.circular(75))
+                          : _selectedIndex == 1
+                              ? BorderRadius.zero
+                              : BorderRadius.only(
+                                  bottomRight: Radius.circular(75)),
                       child: Image.asset(
-                        data[index],
+                        _images[index],
                         fit: BoxFit.cover,
                       ),
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.asset(
-                        "assets/images/back_img_01.png",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 270),
-                    height: 8,
-                    width: _selectedIndex == 0 ? 28 : 8,
-                    curve: Curves.easeInOut,
-                    decoration: BoxDecoration(
-                      color:
-                      _selectedIndex == 0 ? AppTheme.green : AppTheme.gray,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+          Container(
+            padding: EdgeInsets.all(24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title[_selectedIndex],
+                  style: TextStyle(
+                    fontFamily: AppTheme.fontFamily,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    height: 1.375,
+                    color: AppTheme.dark,
                   ),
-                  SizedBox(width: 4),
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 270),
-                    height: 8,
-                    width: _selectedIndex == 1 ? 28 : 8,
-                    curve: Curves.easeInOut,
-                    decoration: BoxDecoration(
-                      color:
-                      _selectedIndex == 1 ? AppTheme.green : AppTheme.gray,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  SizedBox(width: 4),
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 270),
-                    height: 8,
-                    width: _selectedIndex == 2 ? 28 : 8,
-                    curve: Curves.easeInOut,
-                    decoration: BoxDecoration(
-                      color:
-                      _selectedIndex == 2 ? AppTheme.green : AppTheme.gray,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 32),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                child: Center(
-                  child: Text(
-                    _selectedIndex == 0
-                        ? translate("onboad.one_title")
-                        : _selectedIndex == 1
-                        ? translate("onboad.two_title")
-                        : translate("onboad.three_title"),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: AppTheme.fontFamily,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      height: 1.4,
-                      color: AppTheme.white,
-                    ),
-                  ),
+                  textAlign: TextAlign.start,
                 ),
-              ),
-              SizedBox(height: 8),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                child: Center(
-                  child: Text(
-                    _selectedIndex == 0
-                        ? translate("onboad.one_msg")
-                        : _selectedIndex == 1
-                        ? translate("onboad.two_msg")
-                        : translate("onboad.three_msg"),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: AppTheme.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16,
-                      height: 1.5,
-                      color: AppTheme.gray,
-                    ),
+                SizedBox(height: 18),
+                Text(
+                  msg[_selectedIndex],
+                  style: TextStyle(
+                    fontFamily: AppTheme.fontFamily,
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    height: 1.625,
+                    color: AppTheme.dark.withOpacity(0.8),
                   ),
+                  maxLines: 2,
+                  textAlign: TextAlign.start,
                 ),
-              ),
-              SizedBox(height: 48),
-              GestureDetector(
-                onTap: () {
-                  if (_selectedIndex < 2) {
-                    _pageController.animateToPage(
-                      _pageController.page!.toInt() + 1,
-                      duration: Duration(milliseconds: 270),
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return SignInScreen();
-                    //     },
-                    //   ),
-                    // );
-                  }
-                },
-                child: Container(
-                  margin: EdgeInsets.only(
-                    bottom: Platform.isIOS ? 45 : 32,
-                    left: 16,
-                    right: 16,
-                  ),
+                SizedBox(height: 60),
+                Container(
                   height: 56,
-                  decoration: BoxDecoration(
-                      color: AppTheme.green,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Center(
-                    child: Text(
-                      translate("onboad.next"),
-                      style: TextStyle(
-                        fontFamily: AppTheme.fontFamily,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        height: 1.3,
-                        color: AppTheme.white,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AnimatedContainer(
+                              duration: Duration(milliseconds: 270),
+                              height: 9,
+                              width: _selectedIndex == 0 ? 28 : 9,
+                              curve: Curves.easeInOut,
+                              decoration: BoxDecoration(
+                                color: _selectedIndex == 0
+                                    ? AppTheme.blue
+                                    : AppTheme.gray.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            AnimatedContainer(
+                              duration: Duration(milliseconds: 270),
+                              height: 9,
+                              width: _selectedIndex == 1 ? 28 : 9,
+                              curve: Curves.easeInOut,
+                              decoration: BoxDecoration(
+                                color: _selectedIndex == 1
+                                    ? AppTheme.blue
+                                    : AppTheme.gray.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            AnimatedContainer(
+                              duration: Duration(milliseconds: 270),
+                              height: 9,
+                              width: _selectedIndex == 2 ? 28 : 9,
+                              curve: Curves.easeInOut,
+                              decoration: BoxDecoration(
+                                color: _selectedIndex == 2
+                                    ? AppTheme.blue
+                                    : AppTheme.gray.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: () {
+                          if (_selectedIndex < 2) {
+                            _pageController.animateToPage(
+                              _pageController.page!.toInt() + 1,
+                              duration: Duration(milliseconds: 270),
+                              curve: Curves.easeInOut,
+                            );
+                          } else {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return MainScreen();
+                                },
+                              ),
+                            );
+                          }
+                        },
+                        child: Container(
+                          height: 56,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(56),
+                            color: AppTheme.blue,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal:
+                                _selectedIndex == 0 || _selectedIndex == 1
+                                    ? 55
+                                    : 45,
+                          ),
+                          child: Center(
+                            child: Text(
+                              _selectedIndex == 0
+                                  ? 'Next'
+                                  : _selectedIndex == 1
+                                      ? 'Next'
+                                      : 'Get Started',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                fontFamily: AppTheme.fontFamily,
+                                color: AppTheme.white,
+                                height: 25 / 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              )
-            ],
-          )
+                SizedBox(height: 32),
+              ],
+            ),
+          ),
         ],
       ),
     );

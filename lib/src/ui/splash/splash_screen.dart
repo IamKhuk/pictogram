@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
-import 'package:pictogram/src/ui/main_screen.dart';
+import 'package:pictogram/src/ui/splash/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -33,7 +34,6 @@ class _SplashScreenState extends State<SplashScreen>
         curve: Curves.easeInOut,
       ),
     );
-    // controller!.forward();
     super.initState();
   }
 
@@ -51,22 +51,33 @@ class _SplashScreenState extends State<SplashScreen>
             ],
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
               Spacer(),
-              SvgPicture.asset('assets/icons/logo_white.svg'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/icons/logo_white.svg'),
+                ],
+              ),
               Spacer(),
               Spacer(),
               Expanded(
-                child: Text(
-                  'LOADING',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    fontFamily: AppTheme.fontFamily,
-                    letterSpacing: 0.14,
-                    color: AppTheme.white.withOpacity(0.8),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'LOADING',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        fontFamily: AppTheme.fontFamily,
+                        letterSpacing: 0.14,
+                        color: AppTheme.white.withOpacity(0.8),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -83,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
   //   localizationDelegate.changeLocale(Locale(lan));
   // }
 
-  Future<void> _nextScreen() async {
+  _nextScreen(){
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // if (prefs.getString("firstOpen") != null) {
     //   isLoginPage = true;
@@ -100,7 +111,7 @@ class _SplashScreenState extends State<SplashScreen>
           context,
           MaterialPageRoute(
             builder: (context) {
-              return MainScreen();
+              return OnBoardingScreen();
             },
           ),
         );
