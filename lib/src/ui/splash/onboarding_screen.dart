@@ -13,9 +13,9 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _pageController = PageController();
   List<String> _images = [
-    "assets/images/onboarding_01.png",
-    "assets/images/onboarding_02.png",
-    "assets/images/onboarding_03.png",
+    "assets/images/on_boarding_01.png",
+    "assets/images/on_boarding_02.png",
+    "assets/images/on_boarding_03.png",
   ];
   int _selectedIndex = 0;
   List<String> title = [
