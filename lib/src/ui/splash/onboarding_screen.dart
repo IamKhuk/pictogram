@@ -44,6 +44,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: PageView.builder(
                 itemCount: _images.length,
                 controller: _pageController,
+                allowImplicitScrolling: false,
                 onPageChanged: (_index) {
                   setState(() {
                     _selectedIndex = _index;

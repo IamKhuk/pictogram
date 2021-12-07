@@ -8,6 +8,7 @@ import 'package:pictogram/src/model/post_model.dart';
 import 'package:pictogram/src/model/top_story_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/menu/home/likes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -314,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               enableInfiniteScroll: false,
                             ),
                             items: posts[index].images.map(
-                                  (item) {
+                              (item) {
                                 return Container(
                                   height: 170,
                                   width: MediaQuery.of(context).size.width - 80,
@@ -361,14 +362,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               SizedBox(width: 12),
-                              Text(
-                                posts[index].likes.length.toString(),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: AppTheme.fontFamily,
-                                  fontSize: 14,
-                                  height: 1.71,
-                                  color: AppTheme.dark.withOpacity(0.8),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return LikesScreen(
+                                            users: posts[index].likes);
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Text(
+                                    posts[index].likes.length.toString(),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: AppTheme.fontFamily,
+                                      fontSize: 14,
+                                      height: 1.71,
+                                      color: AppTheme.dark.withOpacity(0.8),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
