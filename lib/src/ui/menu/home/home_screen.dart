@@ -71,8 +71,8 @@ List<PostModel> posts = [
       name: 'Sam Dima',
     ),
     images: [
-      'assets/images/post_04.jpg',
       'assets/images/post_03.png',
+      'assets/images/post_04.jpg',
       'assets/images/post_05.jpg',
     ],
     comment: 'Just Perfect',
@@ -148,7 +148,7 @@ List<PostModel> posts = [
       name: 'Clark Amon',
     ),
     images: [
-      'assets/images/post_04.jpg',
+      'assets/images/post_05.jpg',
     ],
     comment: 'Comment Like and Share',
     likes: [
