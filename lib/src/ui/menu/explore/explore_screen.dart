@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/menu/explore/posts_screen.dart';
+import 'package:pictogram/src/ui/menu/home/home_screen.dart';
 
-List<String> posts = [
+List<String> images = [
   'assets/images/post_07.png',
   'assets/images/post_08.png',
   'assets/images/post_09.png',
@@ -72,25 +74,40 @@ class _ExploreScreenState extends State<ExploreScreen> {
           horizontal: 24,
           vertical: 24,
         ),
-        itemCount: posts.length,
+        itemCount: images.length,
         crossAxisCount: 3,
         itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 10),
-                  blurRadius: 75,
-                  spreadRadius: 0,
-                  color: Color(0xFF939393).withOpacity(0.1),
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PostsScreen(post: posts);
+                  },
                 ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                posts[index],
-                fit: BoxFit.cover,
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 10),
+                    blurRadius: 75,
+                    spreadRadius: 0,
+                    color: Color(0xFF939393).withOpacity(0.1),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Hero(
+                  tag: images[index],
+                  child: Image.asset(
+                    images[index],
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           );

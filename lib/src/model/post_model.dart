@@ -2,8 +2,7 @@ import 'package:pictogram/src/model/comments_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
 
 class PostModel {
-  String pfp;
-  String name;
+  UserModel user;
   List<String> images;
   String comment;
   List<UserModel> likes;
@@ -12,8 +11,7 @@ class PostModel {
   bool isLike;
 
   PostModel({
-    required this.pfp,
-    required this.name,
+    required this.user,
     required this.images,
     required this.comment,
     required this.likes,

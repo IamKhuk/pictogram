@@ -15,6 +15,195 @@ UserModel me = UserModel(
   name: 'Khusan Khukumov',
 );
 
+List<PostModel> posts = [
+  PostModel(
+    user: UserModel(
+      pfp: 'assets/images/user_img_04.png',
+      name: 'Sansa Indira',
+    ),
+    images: ['assets/images/post_02.jpg'],
+    comment:
+    'My last day for this year holiday! So excited to share my memories with you guys!',
+    likes: [
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+    ],
+    comments: [
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        comment:
+        "Haha lol. That’s so easy to use and user friendly, go try again in a moment!",
+      ),
+      CommentsModel(
+        user:
+        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+        comment:
+        'Wow! that’s so frickin’ cool dude, where do you get that? Is it available in Supermarket?',
+      ),
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+        comment:
+        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+      ),
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        comment:
+        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+      ),
+    ],
+    time: DateTime.now(),
+    isLike: false,
+  ),
+  PostModel(
+    user: UserModel(
+      pfp: 'assets/images/user_img_02.png',
+      name: 'Sam Dima',
+    ),
+    images: [
+      'assets/images/post_04.jpg',
+      'assets/images/post_03.png',
+      'assets/images/post_05.jpg',
+    ],
+    comment: 'Just Perfect',
+    likes: [
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+    ],
+    comments: [
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        comment:
+        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+      ),
+      CommentsModel(
+        user:
+        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+        comment:
+        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+      ),
+    ],
+    time: DateTime.now(),
+    isLike: false,
+  ),
+  PostModel(
+    user: UserModel(
+      pfp: 'assets/images/user_img_03.png',
+      name: 'Lady June',
+    ),
+    images: [
+      'assets/images/post_04.jpg',
+      'assets/images/post_05.jpg',
+    ],
+    comment: 'Nature',
+    likes: [
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+    ],
+    comments: [
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        comment:
+        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+      ),
+    ],
+    time: DateTime.now(),
+    isLike: false,
+  ),
+  PostModel(
+    user: UserModel(
+      pfp: 'assets/images/user_img_01.png',
+      name: 'Clark Amon',
+    ),
+    images: [
+      'assets/images/post_04.jpg',
+    ],
+    comment: 'Comment Like and Share',
+    likes: [
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+      UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+      UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+      UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+    ],
+    comments: [
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        comment:
+        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+      ),
+      CommentsModel(
+        user:
+        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+        comment:
+        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+      ),
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+        comment:
+        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+      ),
+      CommentsModel(
+        user: UserModel(
+            pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+        comment:
+        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+      ),
+    ],
+    time: DateTime.now(),
+    isLike: false,
+  ),
+];
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -59,103 +248,6 @@ class _HomeScreenState extends State<HomeScreen> {
     TopStoryModel(
       img: 'assets/images/user_img_03.png',
       title: 'Lady June',
-    ),
-  ];
-
-  List<PostModel> posts = [
-    PostModel(
-      pfp: 'assets/images/user_img_04.png',
-      name: 'Sansa Indira',
-      images: ['assets/images/post_02.jpg'],
-      comment:
-          'My last day for this year holiday! So excited to share my memories with you guys!',
-      likes: [
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-      ],
-      comments: [
-        CommentsModel(
-          user: UserModel(
-              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-          comment:
-              "Haha lol. That’s so easy to use and user friendly, go try again in a moment!",
-        ),
-        CommentsModel(
-          user:
-              UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-          comment:
-              'Wow! that’s so frickin’ cool dude, where do you get that? Is it available in Supermarket?',
-        ),
-        CommentsModel(
-          user: UserModel(
-              pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-          comment:
-              'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
-        ),
-        CommentsModel(
-          user: UserModel(
-              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-          comment:
-              '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
-        ),
-      ],
-      time: DateTime.now(),
-      isLike: false,
-    ),
-    PostModel(
-      pfp: 'assets/images/user_img_04.png',
-      name: 'Sansa Indira',
-      images: [
-        'assets/images/post_03.png',
-        'assets/images/post_04.jpg',
-        'assets/images/post_05.jpg',
-      ],
-      comment: 'My last day for this year holiday! This was awesome :)',
-      likes: [
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-      ],
-      comments: [
-        CommentsModel(
-          user: UserModel(
-              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-          comment:
-              "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
-        ),
-        CommentsModel(
-          user:
-              UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-          comment:
-              '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
-        ),
-        CommentsModel(
-          user: UserModel(
-              pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-          comment:
-              'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
-        ),
-      ],
-      time: DateTime.now(),
-      isLike: false,
     ),
   ];
 

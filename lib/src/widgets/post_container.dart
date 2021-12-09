@@ -54,13 +54,13 @@ class _PostContainerState extends State<PostContainer> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(42),
-                  child: Image.asset(widget.post.pfp),
+                  child: Image.asset(widget.post.user.pfp),
                 ),
               ),
               SizedBox(width: 20),
               Expanded(
                 child: Text(
-                  widget.post.name,
+                  widget.post.user.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: AppTheme.fontFamily,
