@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147232941891",
+    "project_id": "pictogram-share",
+    "storage_bucket": "pictogram-share.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147232941891:android:400603eaa17c43c34af1f6",
+        "android_client_info": {
+          "package_name": "uz.pictogram.share.pictogram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147232941891-fe3hpt918od61thm2rigannejetmknr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBneVGsXY5bVBPej2G_MUlhOeD-KpgtBnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147232941891-fe3hpt918od61thm2rigannejetmknr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

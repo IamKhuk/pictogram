@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pictogram/src/model/comments_model.dart';
 import 'package:pictogram/src/model/post_model.dart';
 import 'package:pictogram/src/model/top_story_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
@@ -77,10 +78,30 @@ class _HomeScreenState extends State<HomeScreen> {
         UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
       ],
       comments: [
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+        CommentsModel(
+          user: UserModel(
+              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+          comment:
+              "Haha lol. That’s so easy to use and user friendly, go try again in a moment!",
+        ),
+        CommentsModel(
+          user:
+              UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+          comment:
+              'Wow! that’s so frickin’ cool dude, where do you get that? Is it available in Supermarket?',
+        ),
+        CommentsModel(
+          user: UserModel(
+              pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+          comment:
+              'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+        ),
+        CommentsModel(
+          user: UserModel(
+              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+          comment:
+              '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+        ),
       ],
       time: DateTime.now(),
       isLike: false,
@@ -110,9 +131,24 @@ class _HomeScreenState extends State<HomeScreen> {
         UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
       ],
       comments: [
-        UserModel(pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
-        UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
-        UserModel(pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+        CommentsModel(
+          user: UserModel(
+              pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
+          comment:
+          "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+        ),
+        CommentsModel(
+          user:
+          UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+          comment:
+          '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+        ),
+        CommentsModel(
+          user: UserModel(
+              pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
+          comment:
+          'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+        ),
       ],
       time: DateTime.now(),
       isLike: false,

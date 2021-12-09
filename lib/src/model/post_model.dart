@@ -1,3 +1,4 @@
+import 'package:pictogram/src/model/comments_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
 
 class PostModel {
@@ -6,7 +7,7 @@ class PostModel {
   List<String> images;
   String comment;
   List<UserModel> likes;
-  List<UserModel> comments;
+  List<CommentsModel> comments;
   DateTime time;
   bool isLike;
 
