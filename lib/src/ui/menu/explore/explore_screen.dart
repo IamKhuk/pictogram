@@ -111,10 +111,23 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             onChanged = true;
                           });
                         },
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          fontFamily: AppTheme.fontFamily,
+                          color: AppTheme.dark,
+                        ),
                         controller: _controller,
                         autofocus: false,
                         cursorColor: AppTheme.blue,
                         decoration: InputDecoration(
+                          hintText: 'Search here',
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                            fontFamily: AppTheme.fontFamily,
+                            color: AppTheme.gray,
+                          ),
                           prefixIcon: onChanged == false
                               ? GestureDetector(
                                   onTap: () {
@@ -175,6 +188,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           },
                         ),
                       );
+                      setState(() {
+                        onSearch = false;
+                      });
                     },
                     child: Container(
                       decoration: BoxDecoration(
