@@ -45,79 +45,171 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+  TextEditingController _controller = new TextEditingController();
+  bool onSearch = false;
+  bool onChanged = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.bg2,
-      appBar: AppBar(
-        title: Text(
-          ' Explore',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            fontFamily: AppTheme.fontFamily,
-            color: AppTheme.dark,
-            height: 1.357,
-          ),
-        ),
-        centerTitle: false,
-        actions: [
-          SvgPicture.asset('assets/icons/search.svg'),
-          SizedBox(width: 24),
-        ],
-        elevation: 0,
-        backgroundColor: AppTheme.bg1,
-        brightness: Brightness.light,
-      ),
-      body: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 24,
-        ),
-        itemCount: images.length,
-        crossAxisCount: 3,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return PostsScreen(post: posts);
-                  },
-                ),
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 75,
-                    spreadRadius: 0,
-                    color: Color(0xFF939393).withOpacity(0.1),
-                  ),
-                ],
+      body: GestureDetector(
+        onTap: (){
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+          setState(() {
+            onSearch = false;
+          });
+        },
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * ((90) / 812),
+              color: AppTheme.bg1,
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 12,
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Hero(
-                  tag: images[index],
-                  child: Image.asset(
-                    images[index],
-                    fit: BoxFit.cover,
-                  ),
+              child: onSearch == false
+                  ? Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            ' Explore',
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: AppTheme.fontFamily,
+                              color: AppTheme.dark,
+                              height: 1.357,
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              onSearch = true;
+                            });
+                          },
+                          child: Container(
+                            height: 38,
+                            child: Center(
+                              child: SvgPicture.asset('assets/icons/search.svg'),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(
+                      padding: EdgeInsets.only(top: 16),
+                      child: TextField(
+                        onChanged: (_text) {
+                          setState(() {
+                            onChanged = true;
+                          });
+                        },
+                        controller: _controller,
+                        autofocus: false,
+                        cursorColor: AppTheme.blue,
+                        decoration: InputDecoration(
+                          prefixIcon: onChanged == false
+                              ? GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      onSearch = false;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                      right: 16,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/search.svg',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _controller.text = '';
+                                      if (_controller.text == '') {
+                                        onChanged = false;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                      right: 16,
+                                    ),
+                                    child: SvgPicture.asset('assets/icons/x.svg'),
+                                  ),
+                                ),
+                        ),
+                      ),
+                    ),
+            ),
+            Expanded(
+              child: StaggeredGridView.countBuilder(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 24,
                 ),
+                itemCount: images.length,
+                crossAxisCount: 3,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return PostsScreen(post: posts);
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 10),
+                            blurRadius: 75,
+                            spreadRadius: 0,
+                            color: Color(0xFF939393).withOpacity(0.1),
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Hero(
+                          tag: images[index],
+                          child: Image.asset(
+                            images[index],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                staggeredTileBuilder: (index) => StaggeredTile.count(
+                  index % 7 == 0 ? 2 : 1,
+                  index % 7 == 0 ? 2 : 1,
+                ),
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
               ),
             ),
-          );
-        },
-        staggeredTileBuilder: (index) => StaggeredTile.count(
-          index % 7 == 0 ? 2 : 1,
-          index % 7 == 0 ? 2 : 1,
+          ],
         ),
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
       ),
     );
   }
