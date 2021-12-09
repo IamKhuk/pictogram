@@ -14,6 +14,7 @@ class BottomDialog {
     Function(CommentsModel _comment) onTap,
   ) {
     TextEditingController _controller = new TextEditingController();
+    bool onChanged = false;
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -155,6 +156,15 @@ class BottomDialog {
                                   borderRadius: BorderRadius.circular(52),
                                 ),
                                 child: TextField(
+                                  enabled: true,
+                                  onChanged: (_text) {
+                                    setState(() {
+                                      onChanged = true;
+                                      if (_controller.text == '') {
+                                        onChanged = false;
+                                      }
+                                    });
+                                  },
                                   controller: _controller,
                                   cursorColor: AppTheme.blue,
                                   style: TextStyle(
@@ -174,22 +184,44 @@ class BottomDialog {
                                       height: 1.72,
                                       color: AppTheme.dark.withOpacity(0.6),
                                     ),
-                                    prefixIcon: SvgPicture.asset(
-                                        'assets/icons/smile.svg'),
+                                    prefixIcon: Container(
+                                      padding: EdgeInsets.only(
+                                        top: 13,
+                                        bottom: 13,
+                                        left: 20,
+                                        right: 13,
+                                      ),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/smile.svg',
+                                      ),
+                                    ),
                                     suffixIcon: GestureDetector(
                                       onTap: () {
-                                        onTap(
-                                          CommentsModel(
-                                            user: me,
-                                            comment: _controller.text,
-                                          ),
-                                        );
+                                        if(_controller.text != ''){
+                                          onTap(
+                                            CommentsModel(
+                                              user: me,
+                                              comment: _controller.text,
+                                            ),
+                                          );
+                                        }
                                         setState(() {
                                           _controller.text = '';
                                         });
                                       },
-                                      child: SvgPicture.asset(
-                                        'assets/icons/send.svg',
+                                      child: Container(
+                                        padding: EdgeInsets.only(
+                                          top: 13,
+                                          bottom: 13,
+                                          right: 20,
+                                          left: 13,
+                                        ),
+                                        child: SvgPicture.asset(
+                                          'assets/icons/send.svg',
+                                          color: onChanged == false
+                                              ? AppTheme.dark
+                                              : AppTheme.blue,
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -5,8 +5,8 @@ import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/ui/menu/mail/mail_screen.dart';
 import 'package:pictogram/src/ui/menu/plus/plus_screen.dart';
 import 'package:pictogram/src/ui/menu/profile/profile_screen.dart';
-import 'package:pictogram/src/ui/menu/send/send_screen.dart';
 
+import 'menu/explore/explore_screen.dart';
 import 'menu/home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _MainScreen extends State<MainScreen> {
 
   List<Widget> data = [
     HomeScreen(),
-    SendScreen(),
+    ExploreScreen(),
     PlusScreen(),
     MailScreen(),
     ProfileScreen(),
@@ -95,7 +95,7 @@ class _MainScreen extends State<MainScreen> {
             icon: Column(
               children: [
                 SvgPicture.asset(
-                  'assets/icons/send.svg',
+                  'assets/icons/search.svg',
                   color: _selectedIndex == 1
                       ? AppTheme.black
                       : AppTheme.gray,
