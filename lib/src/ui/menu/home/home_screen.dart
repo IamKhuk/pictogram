@@ -4,12 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pictogram/src/dialog/bottom_dialog.dart';
 import 'package:pictogram/src/model/comments_model.dart';
 import 'package:pictogram/src/model/post_model.dart';
 import 'package:pictogram/src/model/top_story_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/ui/menu/home/likes_screen.dart';
+
+UserModel me = UserModel(
+  pfp: 'assets/images/me.jpg',
+  name: 'Khusan Khukumov',
+);
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -135,19 +141,19 @@ class _HomeScreenState extends State<HomeScreen> {
           user: UserModel(
               pfp: 'assets/images/user_img_01.png', name: 'Clark Amon'),
           comment:
-          "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+              "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
         ),
         CommentsModel(
           user:
-          UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
+              UserModel(pfp: 'assets/images/user_img_02.png', name: 'Sam Dima'),
           comment:
-          '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+              '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
         ),
         CommentsModel(
           user: UserModel(
               pfp: 'assets/images/user_img_03.png', name: 'Lady June'),
           comment:
-          'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+              'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
         ),
       ],
       time: DateTime.now(),
@@ -275,6 +281,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: BoxDecoration(
                   color: AppTheme.white,
                   borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 75,
+                      spreadRadius: 0,
+                      color: Color(0xFF939393).withOpacity(0.1),
+                    ),
+                  ],
                 ),
                 child: Column(
                   children: [
@@ -287,6 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 42,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(42),
+                            border: Border.all(color: AppTheme.blue),
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(42),
@@ -382,13 +397,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   setState(() {
                                     posts[index].isLike = !posts[index].isLike;
                                     posts[index].isLike == true
-                                        ? posts[index].likes.add(
+                                        ? posts[index].likes.insert(
+                                              0,
                                               UserModel(
                                                 pfp: 'assets/images/me.jpg',
                                                 name: 'Khusan Khukumov',
                                               ),
                                             )
-                                        : posts[index].likes.removeLast();
+                                        : posts[index].likes.removeAt(0);
                                   });
                                 },
                                 child: SvgPicture.asset(
@@ -428,21 +444,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Row(
-                            children: [
-                              SvgPicture.asset('assets/icons/comment.svg'),
-                              SizedBox(width: 12),
-                              Text(
-                                posts[index].comments.length.toString(),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: AppTheme.fontFamily,
-                                  fontSize: 14,
-                                  height: 1.71,
-                                  color: AppTheme.dark.withOpacity(0.8),
+                          child: GestureDetector(
+                            onTap: () {
+                              BottomDialog.showComments(
+                                context,
+                                posts[index].comments,
+                                (_comment) {
+                                  setState(() {
+                                    posts[index].comments.insert(0, _comment);
+                                  });
+                                },
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                SvgPicture.asset('assets/icons/comment.svg'),
+                                SizedBox(width: 12),
+                                Text(
+                                  posts[index].comments.length.toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: AppTheme.fontFamily,
+                                    fontSize: 14,
+                                    height: 1.71,
+                                    color: AppTheme.dark.withOpacity(0.8),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         Text(
