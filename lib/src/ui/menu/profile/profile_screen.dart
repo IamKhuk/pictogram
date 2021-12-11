@@ -7,6 +7,7 @@ import 'package:pictogram/src/dialog/bottom_dialog.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/ui/menu/explore/posts_screen.dart';
 import 'package:pictogram/src/ui/menu/home/home_screen.dart';
+import 'package:pictogram/src/ui/menu/home/likes_screen.dart';
 import 'package:pictogram/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -208,29 +209,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: Row(
               children: [
-                Column(
-                  children: [
-                    Text(
-                      Utils.numberFormat(posts).toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontFamily: AppTheme.fontFamily,
-                        color: AppTheme.dark,
-                        height: 1.65,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LikesScreen(
+                              users: Utils.userListFormat(posts));
+                        },
                       ),
-                    ),
-                    Text(
-                      'Likes',
-                      style: TextStyle(
-                        fontFamily: AppTheme.fontFamily,
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                        color: AppTheme.dark.withOpacity(0.8),
-                        height: 1.71,
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Text(
+                        Utils.numberFormat(posts).toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: AppTheme.fontFamily,
+                          color: AppTheme.dark,
+                          height: 1.65,
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        'Likes',
+                        style: TextStyle(
+                          fontFamily: AppTheme.fontFamily,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: AppTheme.dark.withOpacity(0.8),
+                          height: 1.71,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Spacer(),
                 Column(

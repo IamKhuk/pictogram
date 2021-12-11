@@ -104,34 +104,47 @@ class _PostContainerState extends State<PostContainer> {
           SizedBox(height: 20),
           Stack(
             children: [
-              Container(
-                height: 170,
-                padding: EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                ),
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    viewportFraction: 1,
-                    scrollDirection: Axis.horizontal,
-                    enableInfiniteScroll: false,
+              GestureDetector(
+                onDoubleTap: (){
+                  setState(() {
+                    widget.post.isLike = !widget.post.isLike;
+                    widget.post.isLike == true
+                        ? widget.post.likes.insert(
+                      0,
+                      me,
+                    )
+                        : widget.post.likes.removeAt(0);
+                  });
+                },
+                child: Container(
+                  height: 170,
+                  padding: EdgeInsets.only(
+                    left: 16,
+                    right: 16,
                   ),
-                  items: widget.post.images.map(
-                    (item) {
-                      return Container(
-                        height: 170,
-                        width: MediaQuery.of(context).size.width - 80,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            item,
-                            fit: BoxFit.fitWidth,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: false,
+                      viewportFraction: 1,
+                      scrollDirection: Axis.horizontal,
+                      enableInfiniteScroll: false,
+                    ),
+                    items: widget.post.images.map(
+                      (item) {
+                        return Container(
+                          height: 170,
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ).toList(),
+                        );
+                      },
+                    ).toList(),
+                  ),
                 ),
               ),
             ],
