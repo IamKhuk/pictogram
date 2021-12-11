@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:pictogram/src/dialog/bottom_dialog.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/ui/menu/explore/posts_screen.dart';
 import 'package:pictogram/src/ui/menu/home/home_screen.dart';
 import 'package:pictogram/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -13,6 +16,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final picker = ImagePicker();
+  bool isLoadingImage = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,18 +65,66 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(86),
                           border: Border.all(color: AppTheme.blue),
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(86),
-                          child: Image.asset(
-                            me.pfp,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        child: isLoadingImage == false
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(86),
+                                child: Image.asset(
+                                  me.pfp,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : Padding(
+                                padding: EdgeInsets.all(15),
+                                child: CircularProgressIndicator(),
+                              ),
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            BottomDialog.createUploadImageChat(
+                              context,
+                              () async {
+                                final pickedFile = await picker.pickImage(
+                                  source: ImageSource.gallery,
+                                );
+                                if (pickedFile != null) {
+                                  setState(() {
+                                    isLoadingImage = true;
+                                    me.pfp = pickedFile.path;
+                                  });
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.setString(
+                                    "avatar",
+                                    pickedFile.path,
+                                  );
+                                  setState(() {
+                                    isLoadingImage = false;
+                                  });
+                                }
+                              },
+                              () async {
+                                final pickedFile = await picker.pickImage(
+                                  source: ImageSource.camera,
+                                );
+                                if (pickedFile != null) {
+                                  setState(() {
+                                    isLoadingImage = true;
+                                  });
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.setString(
+                                    "avatar",
+                                    pickedFile.path,
+                                  );
+                                  setState(() {
+                                    isLoadingImage = false;
+                                  });
+                                }
+                              },
+                            );
+                          },
                           child: Container(
                             height: 36,
                             width: 36,
@@ -244,7 +298,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 posts.length,
                 (index) {
                   return GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(

@@ -241,4 +241,157 @@ class BottomDialog {
       },
     );
   }
+
+  static void createUploadImageChat(
+      BuildContext context,
+      Function onGallery,
+      Function onCamera,
+      ) async {
+    showModalBottomSheet(
+      barrierColor: AppTheme.black.withOpacity(0.45),
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
+              height: 212,
+              margin: EdgeInsets.only(
+                bottom: 32,
+                left: 16,
+                right: 16,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppTheme.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              topLeft: Radius.circular(8),
+                            ),
+                            color: AppTheme.white,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Upload Image from',
+                              style: TextStyle(
+                                fontFamily: AppTheme.fontFamily,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                height: 1.2,
+                                color: AppTheme.gray,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 1,
+                          color: AppTheme.gray.withOpacity(0.1),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () async {
+                              onGallery();
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: AppTheme.white,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Gallery',
+                                  style: TextStyle(
+                                    fontFamily: AppTheme.fontFamily,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    height: 1.2,
+                                    color: AppTheme.blue,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 1,
+                          color: AppTheme.gray.withOpacity(0.1),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              onCamera();
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
+                                ),
+                                color: AppTheme.white,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Camera',
+                                  style: TextStyle(
+                                    fontFamily: AppTheme.fontFamily,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    height: 1.2,
+                                    color: AppTheme.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(child: Container()),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: TextStyle(
+                            fontFamily: AppTheme.fontFamily,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            height: 1.2,
+                            color: AppTheme.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 }
