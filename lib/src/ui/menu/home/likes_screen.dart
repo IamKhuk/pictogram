@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pictogram/src/model/user_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/menu/profile/user_profile_screen.dart';
 import 'package:pictogram/src/widgets/user_likes_container.dart';
 
 class LikesScreen extends StatefulWidget {
@@ -50,7 +51,19 @@ class _LikesScreenState extends State<LikesScreen> {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              UserLikesContainer(data: widget.users[index]),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return UserProfileScreen(user: widget.users[index]);
+                      },
+                    ),
+                  );
+                },
+                child: UserLikesContainer(data: widget.users[index]),
+              ),
               index == widget.users.length - 1
                   ? SizedBox(height: 24)
                   : Container(),

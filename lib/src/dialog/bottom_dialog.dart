@@ -6,6 +6,7 @@ import 'package:pictogram/src/theme/app_theme.dart';
 import 'dart:io';
 
 import 'package:pictogram/src/ui/menu/home/home_screen.dart';
+import 'package:pictogram/src/ui/menu/profile/user_profile_screen.dart';
 
 class BottomDialog {
   static void showComments(
@@ -87,22 +88,34 @@ class BottomDialog {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            height: 38,
-                                            width: 38,
-                                            margin: EdgeInsets.only(right: 16),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(38),
-                                              border: Border.all(
-                                                  color: AppTheme.blue),
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(38),
-                                              child: Image.asset(
-                                                comments[index].user.pfp,
-                                                fit: BoxFit.cover,
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return UserProfileScreen(user: comments[index].user);
+                                                  },
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              height: 38,
+                                              width: 38,
+                                              margin: EdgeInsets.only(right: 16),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(38),
+                                                border: Border.all(
+                                                    color: AppTheme.blue),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(38),
+                                                child: Image.asset(
+                                                  comments[index].user.pfp,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -121,7 +134,7 @@ class BottomDialog {
                                                   height: 1.72,
                                                   color: AppTheme.dark,
                                                 ),
-                                                children: <TextSpan>[
+                                                children: [
                                                   TextSpan(
                                                     text:
                                                         comments[index].comment,
