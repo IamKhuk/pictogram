@@ -11,6 +11,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  bool isLoading = false;
   PageController _pageController = PageController();
   List<String> _images = [
     "assets/images/on_boarding_01.png",
@@ -168,6 +169,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               curve: Curves.easeInOut,
                             );
                           } else {
+                            setState(() {
+                              isLoading = true;
+                            });
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -176,6 +180,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 },
                               ),
                             );
+                            setState(() {
+                              isLoading = false;
+                            });
                           }
                         },
                         child: Container(
@@ -191,20 +198,26 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     : 45,
                           ),
                           child: Center(
-                            child: Text(
-                              _selectedIndex == 0
-                                  ? 'Next'
-                                  : _selectedIndex == 1
-                                      ? 'Next'
-                                      : 'Get Started',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                fontFamily: AppTheme.fontFamily,
-                                color: AppTheme.white,
-                                height: 25 / 18,
-                              ),
-                            ),
+                            child: isLoading == false
+                                ? Text(
+                                    _selectedIndex == 0
+                                        ? 'Next'
+                                        : _selectedIndex == 1
+                                            ? 'Next'
+                                            : 'Get Started',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      fontFamily: AppTheme.fontFamily,
+                                      color: AppTheme.white,
+                                      height: 25 / 18,
+                                    ),
+                                  )
+                                : CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      AppTheme.white,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
