@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pictogram/src/ui/auth/login_screen.dart';
 import 'package:pictogram/src/ui/splash/splash_screen.dart';
 
 String language = 'uz';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
           child: child!,
         );
       },
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

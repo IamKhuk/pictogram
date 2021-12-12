@@ -149,18 +149,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
                 SizedBox(width: 24),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
                       onFollow = !onFollow;
                     });
                   },
                   child: Container(
                     height: 56,
-                    width: MediaQuery.of(context).size.width-164,
+                    width: MediaQuery.of(context).size.width - 164,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(56),
                       border: Border.all(color: AppTheme.blue, width: 2),
-                      color: onFollow == false? AppTheme.blue : AppTheme.white,
+                      color: onFollow == false ? AppTheme.blue : AppTheme.white,
                       boxShadow: [
                         BoxShadow(
                           offset: Offset(0, 10),
@@ -172,12 +172,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        onFollow==false? 'Follow' : 'Following',
+                        onFollow == false ? 'Follow' : 'Following',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                           fontFamily: AppTheme.fontFamily,
-                          color: onFollow== false? AppTheme.white : AppTheme.dark,
+                          color: onFollow == false
+                              ? AppTheme.white
+                              : AppTheme.dark,
                         ),
                       ),
                     ),
