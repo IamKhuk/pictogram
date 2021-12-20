@@ -172,6 +172,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.22.0"
+  flutter_swipe_action_cell:
+    dependency: "direct main"
+    description:
+      name: flutter_swipe_action_cell
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.5"
   flutter_switch:
     dependency: "direct main"
     description:
