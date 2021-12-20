@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:pictogram/src/defaults/users.dart';
+import 'package:pictogram/src/dialog/bottom_dialog.dart';
 import 'package:pictogram/src/model/chats_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
 
@@ -15,12 +16,7 @@ class _MailScreenState extends State<MailScreen> {
   List<ChatsModel> chats = [
     ChatsModel(user: user_01, msg: ['Hey buddy', 'Howya doin?'], isRead: true),
     ChatsModel(
-        user: user_02,
-        msg: [
-          'Hi There',
-          'Where are you? kbkbkbkbjkbkjbkjjjkkjbjkbjkbkbjkbkbk'
-        ],
-        isRead: true),
+        user: user_02, msg: ['Hi There', 'Where are you?'], isRead: true),
     ChatsModel(user: user_03, msg: ['Hey babe'], isRead: true),
     ChatsModel(user: user_04, msg: ['Hey buddy', 'Howya doin?']),
     ChatsModel(user: user_05, msg: ['Hey buddy', 'Howya doin?']),
@@ -82,8 +78,18 @@ class _MailScreenState extends State<MailScreen> {
                 ),
                 widthSpace: 100,
                 onTap: (CompletionHandler handler) async {
-                  await handler(true);
-                  chats.removeAt(index);
+                  BottomDialog.showDeleteChat(
+                    context,
+                    (delete) {
+                      setState(() {
+                        chats[index].deleted = delete;
+                        if (chats[index].deleted == true) {
+                          chats.removeAt(index);
+                        }
+                      });
+                    },
+                  );
+                  await handler(false);
                   setState(() {});
                 },
                 color: AppTheme.bg2,
