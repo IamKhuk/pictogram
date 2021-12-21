@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
       ),
-
     );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
