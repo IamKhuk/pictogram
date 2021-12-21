@@ -67,7 +67,6 @@ class _MailScreenState extends State<MailScreen> {
             key: ObjectKey(chats[index]),
             index: index,
             backgroundColor: AppTheme.bg2,
-
             trailingActions: [
               SwipeAction(
                 content: Padding(

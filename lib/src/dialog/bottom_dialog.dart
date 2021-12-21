@@ -460,7 +460,6 @@ class BottomDialog {
                       height: 1.72,
                       color: AppTheme.dark,
                     ),
-
                   ),
                   SizedBox(height: 20),
                   Expanded(
