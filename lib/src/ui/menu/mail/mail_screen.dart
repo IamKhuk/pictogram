@@ -5,7 +5,9 @@ import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:pictogram/src/defaults/users.dart';
 import 'package:pictogram/src/dialog/bottom_dialog.dart';
 import 'package:pictogram/src/model/chats_model.dart';
+import 'package:pictogram/src/model/msg_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/menu/mail/chat_screen.dart';
 
 class MailScreen extends StatefulWidget {
   @override
@@ -14,26 +16,139 @@ class MailScreen extends StatefulWidget {
 
 class _MailScreenState extends State<MailScreen> {
   List<ChatsModel> chats = [
-    ChatsModel(user: user_01, msg: ['Hey buddy', 'Howya doin?'], isRead: true),
     ChatsModel(
-        user: user_02, msg: ['Hi There', 'Where are you?'], isRead: true),
-    ChatsModel(user: user_03, msg: ['Hey babe'], isRead: true),
-    ChatsModel(user: user_04, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_05, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_06, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_07, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_08, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_09, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_10, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_11, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_12, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_13, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_14, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_15, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_16, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_17, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_18, msg: ['Hey buddy', 'Howya doin?']),
-    ChatsModel(user: user_19, msg: ['Hey buddy', 'Howya doin?']),
+      user: user_01,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+      isRead: true,
+    ),
+    ChatsModel(
+      user: user_02,
+      msg: [
+        MsgModel(msg: 'Hey bruh'),
+        MsgModel(msg: "Where are you from?"),
+      ],
+      isRead: true,
+    ),
+    ChatsModel(
+      user: user_03,
+      msg: [MsgModel(msg: 'Hey babe')],
+      isRead: true,
+    ),
+    ChatsModel(
+      user: user_04,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_05,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_06,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_07,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_08,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_09,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_10,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_11,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_12,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_13,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_14,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_15,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_16,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_17,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_18,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
+    ChatsModel(
+      user: user_19,
+      msg: [
+        MsgModel(msg: 'Hey dude'),
+        MsgModel(msg: "How are you doing"),
+      ],
+    ),
   ];
 
   @override
@@ -115,91 +230,104 @@ class _MailScreenState extends State<MailScreen> {
             //     },
             //   ),
             // ],
-            child: Container(
-              height: 68,
-              padding: EdgeInsets.only(
-                top: 8,
-                bottom: 8,
-                left: 24,
-                right: 24,
-              ),
-              margin: EdgeInsets.only(bottom: 16),
-              child: Row(
-                children: [
-                  Container(
-                    height: 52,
-                    width: 52,
-                    margin: EdgeInsets.only(right: 16),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppTheme.blue),
-                      borderRadius: BorderRadius.circular(52),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(52),
-                      child: Image.asset(
-                        chats[index].user.pfp,
-                        fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ChatScreen(data: chats[index]);
+                    },
+                  ),
+                );
+              },
+              child: Container(
+                height: 68,
+                color: Colors.transparent,
+                padding: EdgeInsets.only(
+                  top: 8,
+                  bottom: 8,
+                  left: 24,
+                  right: 24,
+                ),
+                margin: EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 52,
+                      width: 52,
+                      margin: EdgeInsets.only(right: 16),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppTheme.blue),
+                        borderRadius: BorderRadius.circular(52),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(52),
+                        child: Image.asset(
+                          chats[index].user.pfp,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          chats[index].user.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            fontFamily: AppTheme.fontFamily,
-                            height: 1.64,
-                            color: AppTheme.dark,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            chats[index].user.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              fontFamily: AppTheme.fontFamily,
+                              height: 1.64,
+                              color: AppTheme.dark,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          chats[index].msg.last,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            fontFamily: AppTheme.fontFamily,
-                            height: 1.72,
-                            color: AppTheme.dark.withOpacity(0.8),
+                          SizedBox(height: 2),
+                          Text(
+                            chats[index].msg.last.msg,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: AppTheme.fontFamily,
+                              height: 1.72,
+                              color: AppTheme.dark.withOpacity(0.8),
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  chats[index].isRead == true
-                      ? Container(
-                          width: 52,
-                          child: Center(
-                            child: Container(
-                              height: 24,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppTheme.blue,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  chats[index].msg.length.toString(),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 14,
-                                    fontFamily: AppTheme.fontFamily,
-                                    color: AppTheme.white,
+                    chats[index].isRead == true
+                        ? Container(
+                            width: 52,
+                            child: Center(
+                              child: Container(
+                                height: 24,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppTheme.blue,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    chats[index].msg.length.toString(),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14,
+                                      fontFamily: AppTheme.fontFamily,
+                                      color: AppTheme.white,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      : Container(),
-                ],
+                          )
+                        : Container(),
+                  ],
+                ),
               ),
             ),
           );
