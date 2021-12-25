@@ -80,6 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 return UserProfileScreen(
                                     user: widget.data.user);
                               },
+
                             ),
                           );
                         },

@@ -245,6 +245,7 @@ class _MailScreenState extends State<MailScreen> {
                 height: 68,
                 color: Colors.transparent,
                 padding: EdgeInsets.only(
+
                   top: 8,
                   bottom: 8,
                   left: 24,
