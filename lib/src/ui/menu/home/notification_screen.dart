@@ -7,6 +7,7 @@ import 'package:pictogram/src/defaults/users.dart';
 import 'package:pictogram/src/model/notification_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/widgets/notification_container.dart';
+import 'package:pictogram/src/widgets/heading_text.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -90,18 +91,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ? ListView(
               padding: EdgeInsets.all(24),
               children: [
-                today.length > 0
-                    ? Text(
-                        'Today',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          fontFamily: AppTheme.fontFamily,
-                          height: 1.5,
-                          color: AppTheme.dark,
-                        ),
-                      )
-                    : Container(),
+                today.length > 0 ? HeadingText(text: 'Today') : Container(),
                 today.length > 0
                     ? ListView.builder(
                         itemCount: today.length,
@@ -114,16 +104,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     : Container(),
                 today.length > 0 ? SizedBox(height: 30) : Container(),
                 thisWeek.length > 0
-                    ? Text(
-                        'This Week',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          fontFamily: AppTheme.fontFamily,
-                          height: 1.5,
-                          color: AppTheme.dark,
-                        ),
-                      )
+                    ? HeadingText(text: 'This Week')
                     : Container(),
                 thisWeek.length > 0
                     ? ListView.builder(
@@ -138,46 +119,46 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ],
             )
           : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                'assets/icons/failed.svg',
-                color: AppTheme.dark,
-              ),
-              SizedBox(height: 35),
-              Text(
-                'Notification Empty',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  fontFamily: AppTheme.fontFamily,
-                  height: 1.4,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/failed.svg',
                   color: AppTheme.dark,
                 ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  SizedBox(width: 24),
-                  Expanded(
-                    child: Text(
-                      'There are no notifications in this account, let’s discover and take a look this later.',
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16,
-                        fontFamily: AppTheme.fontFamily,
-                        height: 1.72,
-                        color: AppTheme.dark.withOpacity(0.8),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                SizedBox(height: 35),
+                Text(
+                  'Notification Empty',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontFamily: AppTheme.fontFamily,
+                    height: 1.4,
+                    color: AppTheme.dark,
                   ),
-                  SizedBox(width: 24),
-                ],
-              ),
-            ],
-          ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    SizedBox(width: 24),
+                    Expanded(
+                      child: Text(
+                        'There are no notifications in this account, let’s discover and take a look this later.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          fontFamily: AppTheme.fontFamily,
+                          height: 1.72,
+                          color: AppTheme.dark.withOpacity(0.8),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(width: 24),
+                  ],
+                ),
+              ],
+            ),
     );
   }
 }
