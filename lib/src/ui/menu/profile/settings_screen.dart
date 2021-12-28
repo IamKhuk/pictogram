@@ -73,16 +73,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
               left: 24,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppTheme.white.withOpacity(0.6),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 75,
-                    spreadRadius: 0,
-                    color: Color(0xFF939393).withOpacity(0.1),
-                  ),
-                ]),
+              borderRadius: BorderRadius.circular(10),
+              color: AppTheme.white.withOpacity(0.6),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 10),
+                  blurRadius: 75,
+                  spreadRadius: 0,
+                  color: Color(0xFF939393).withOpacity(0.1),
+                ),
+              ],
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -106,7 +107,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           SettingsContainer(text: 'Actions'),
           SizedBox(height: 30),
           HeadingText(text: 'Security'),
