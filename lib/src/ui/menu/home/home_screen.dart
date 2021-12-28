@@ -9,6 +9,7 @@ import 'package:pictogram/src/model/post_model.dart';
 import 'package:pictogram/src/model/top_story_model.dart';
 import 'package:pictogram/src/model/user_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/ui/menu/home/notification_screen.dart';
 import 'package:pictogram/src/widgets/post_container.dart';
 
 UserModel me = UserModel(
@@ -24,7 +25,7 @@ List<PostModel> posts = [
     ),
     images: ['assets/images/post_02.jpg'],
     comment:
-    'My last day for this year holiday! So excited to share my memories with you guys!',
+        'My last day for this year holiday! So excited to share my memories with you guys!',
     likes: [
       user_01,
       user_02,
@@ -44,23 +45,22 @@ List<PostModel> posts = [
       CommentsModel(
         user: user_01,
         comment:
-        "Haha lol. That’s so easy to use and user friendly, go try again in a moment!",
+            "Haha lol. That’s so easy to use and user friendly, go try again in a moment!",
       ),
       CommentsModel(
-        user:
-        user_02,
+        user: user_02,
         comment:
-        'Wow! that’s so frickin’ cool dude, where do you get that? Is it available in Supermarket?',
+            'Wow! that’s so frickin’ cool dude, where do you get that? Is it available in Supermarket?',
       ),
       CommentsModel(
         user: user_03,
         comment:
-        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+            'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
       ),
       CommentsModel(
         user: user_04,
         comment:
-        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+            '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
       ),
     ],
     time: DateTime.now(),
@@ -97,13 +97,12 @@ List<PostModel> posts = [
       CommentsModel(
         user: user_03,
         comment:
-        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+            "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
       ),
       CommentsModel(
-        user:
-        user_04,
+        user: user_04,
         comment:
-        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+            '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
       ),
     ],
     time: DateTime.now(),
@@ -134,7 +133,7 @@ List<PostModel> posts = [
       CommentsModel(
         user: user_01,
         comment:
-        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+            "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
       ),
     ],
     time: DateTime.now(),
@@ -172,23 +171,22 @@ List<PostModel> posts = [
       CommentsModel(
         user: user_02,
         comment:
-        "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
+            "@dudewayne9 I will go there next week, is it worth it? maybe we can go there together haha.",
       ),
       CommentsModel(
-        user:
-        user_03,
+        user: user_03,
         comment:
-        '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
+            '@john_flicks Haha isn’t that funny to you? share it to your mother and tell me her reaction!',
       ),
       CommentsModel(
         user: user_02,
         comment:
-        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+            'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
       ),
       CommentsModel(
         user: user_04,
         comment:
-        'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
+            'Let me see if I do it for you, just wait a minute and I will come back to you if it’s done :)',
       ),
     ],
     time: DateTime.now(),
@@ -260,7 +258,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: false,
         actions: [
-          SvgPicture.asset('assets/icons/bell.svg'),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return NotificationScreen();
+                  },
+                ),
+              );
+            },
+            child: SvgPicture.asset('assets/icons/bell.svg'),
+          ),
           SizedBox(width: 24),
         ],
         elevation: 0,

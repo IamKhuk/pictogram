@@ -30,15 +30,15 @@ class NotificationContainer extends StatelessWidget {
               );
             },
             child: Container(
-              height: 38,
-              width: 38,
+              height: 48,
+              width: 48,
               margin: EdgeInsets.only(right: 24),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(38),
+                borderRadius: BorderRadius.circular(48),
                 border: Border.all(color: AppTheme.blue),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(38),
+                borderRadius: BorderRadius.circular(48),
                 child: Image.asset(
                   data.user.pfp,
                   fit: BoxFit.cover,
@@ -77,9 +77,9 @@ class NotificationContainer extends StatelessWidget {
                   ),
                   TextSpan(
                     text: data.id == 2
-                        ? data.content
+                        ? '\"'+data.content+'\"'
                         : data.id == 3 && data.content == 'comment'
-                            ? data.mention
+                            ? '\"'+ data.mention+ '\"'
                             : '',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
@@ -95,7 +95,7 @@ class NotificationContainer extends StatelessWidget {
           ),
           SizedBox(width: 12),
           Text(
-            data.date.toString(),
+            data.date.minute.toString(),
             style: TextStyle(
               fontWeight: FontWeight.normal,
               fontSize: 14,

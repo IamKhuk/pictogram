@@ -4,27 +4,48 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pictogram/src/defaults/users.dart';
 import 'package:pictogram/src/model/notification_model.dart';
 import 'package:pictogram/src/theme/app_theme.dart';
+import 'package:pictogram/src/widgets/notification_container.dart';
 
 class NotificationScreen extends StatefulWidget {
-
   @override
   _NotificationScreenState createState() => _NotificationScreenState();
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  List<NotificationModel> today =[
+  List<NotificationModel> today = [
     NotificationModel(user: user_01, id: 1, date: DateTime.now()),
     NotificationModel(user: user_02, id: 1, date: DateTime.now()),
-    NotificationModel(user: user_03, id: 2, content: 'Have a nice day :)', date: DateTime.now()),
-    NotificationModel(user: user_04, id: 3, content: 'post', date: DateTime.now()),
+    NotificationModel(
+      user: user_03,
+      id: 2,
+      content: 'Have a nice day :)',
+      date: DateTime.now(),
+    ),
+    NotificationModel(
+      user: user_04,
+      id: 3,
+      content: 'post',
+      date: DateTime.now(),
+    ),
   ];
 
-  List<NotificationModel> thisWeek =[
+  List<NotificationModel> thisWeek = [
     NotificationModel(user: user_01, id: 1, date: DateTime.now()),
-    NotificationModel(user: user_02, id: 2, content: 'That\'s great', date: DateTime.now()),
+    NotificationModel(
+      user: user_02,
+      id: 2,
+      content: 'That\'s great',
+      date: DateTime.now(),
+    ),
     NotificationModel(user: user_02, id: 1, date: DateTime.now()),
     NotificationModel(user: user_02, id: 1, date: DateTime.now()),
-    NotificationModel(user: user_04, id: 3, content: 'comment', date: DateTime.now()),
+    NotificationModel(
+      user: user_04,
+      id: 3,
+      content: 'comment',
+      date: DateTime.now(),
+      mention: 'Check it out dude',
+    ),
   ];
 
   @override
@@ -63,9 +84,58 @@ class _NotificationScreenState extends State<NotificationScreen> {
         backgroundColor: AppTheme.bg1,
         brightness: Brightness.light,
       ),
-      body: ListView(
-
-      ),
+      body: today.length > 0 || thisWeek.length > 0
+          ? ListView(
+              padding: EdgeInsets.all(24),
+              children: [
+                today.length > 0
+                    ? Text(
+                        'Today',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          fontFamily: AppTheme.fontFamily,
+                          height: 1.5,
+                          color: AppTheme.dark,
+                        ),
+                      )
+                    : Container(),
+                today.length > 0
+                    ? ListView.builder(
+                        itemCount: today.length,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return NotificationContainer(data: today[index]);
+                        },
+                      )
+                    : Container(),
+                today.length > 0 ? SizedBox(height: 30) : Container(),
+                thisWeek.length > 0
+                    ? Text(
+                        'This Week',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          fontFamily: AppTheme.fontFamily,
+                          height: 1.5,
+                          color: AppTheme.dark,
+                        ),
+                      )
+                    : Container(),
+                thisWeek.length > 0
+                    ? ListView.builder(
+                        itemCount: thisWeek.length,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return NotificationContainer(data: thisWeek[index]);
+                        },
+                      )
+                    : Container(),
+              ],
+            )
+          : Center(),
     );
   }
 }
