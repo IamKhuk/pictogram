@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -135,7 +137,47 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     : Container(),
               ],
             )
-          : Center(),
+          : Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/icons/failed.svg',
+                color: AppTheme.dark,
+              ),
+              SizedBox(height: 35),
+              Text(
+                'Notification Empty',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  fontFamily: AppTheme.fontFamily,
+                  height: 1.4,
+                  color: AppTheme.dark,
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  SizedBox(width: 24),
+                  Expanded(
+                    child: Text(
+                      'There are no notifications in this account, let’s discover and take a look this later.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
+                        fontFamily: AppTheme.fontFamily,
+                        height: 1.72,
+                        color: AppTheme.dark.withOpacity(0.8),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(width: 24),
+                ],
+              ),
+            ],
+          ),
     );
   }
 }
