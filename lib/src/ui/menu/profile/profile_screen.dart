@@ -8,6 +8,7 @@ import 'package:pictogram/src/theme/app_theme.dart';
 import 'package:pictogram/src/ui/menu/explore/posts_screen.dart';
 import 'package:pictogram/src/ui/menu/home/home_screen.dart';
 import 'package:pictogram/src/ui/menu/home/likes_screen.dart';
+import 'package:pictogram/src/ui/menu/profile/settings_screen.dart';
 import 'package:pictogram/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,7 +38,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         centerTitle: false,
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsScreen();
+                  },
+                ),
+              );
+            },
             child: SvgPicture.asset('assets/icons/settings.svg'),
           ),
           SizedBox(width: 24),
