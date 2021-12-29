@@ -84,7 +84,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ],
             ),
-
             child: Row(
               children: [
                 Expanded(
