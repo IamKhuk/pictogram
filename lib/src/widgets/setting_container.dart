@@ -46,5 +46,6 @@ class SettingsContainer extends StatelessWidget {
         ],
       ),
     );
+
   }
 }
