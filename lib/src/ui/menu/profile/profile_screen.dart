@@ -46,7 +46,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     return SettingsScreen();
                   },
                 ),
-
               );
             },
             child: SvgPicture.asset('assets/icons/settings.svg'),
