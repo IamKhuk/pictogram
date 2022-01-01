@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class StroryScreen extends StatefulWidget {
+class StoryScreen extends StatefulWidget {
 
   @override
-  _StroryScreenState createState() => _StroryScreenState();
+  _StoryScreenState createState() => _StoryScreenState();
 }
 
-class _StroryScreenState extends State<StroryScreen> {
+class _StoryScreenState extends State<StoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold();
