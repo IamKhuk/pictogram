@@ -6,13 +6,11 @@ class ChatsModel {
   List<MsgModel> msg;
   bool isRead;
   bool deleted;
-  int id;
 
   ChatsModel({
     required this.user,
     required this.msg,
     this.isRead = false,
     this.deleted = false,
-    this.id = 1,
   });
 }
