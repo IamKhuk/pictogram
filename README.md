@@ -23,7 +23,7 @@ The functionalities of this app:
   </tr>
   <tr>
     <td><img src="https://github.com/IamKhuk/pictogram/blob/master/screenshots/home_page.png"></td>
-    <td><img src="https://https://github.com/IamKhuk/pictogram/blob/master/screenshots/explore_screen.png"></td>
     <td><img src="https://github.com/IamKhuk/pictogram/blob/master/screenshots/explore_screen.png"></td>
+    <td><img src="https://github.com/IamKhuk/pictogram/blob/master/screenshots/chats_screen.png"></td>
   </tr>
 </table>
