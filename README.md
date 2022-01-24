@@ -11,3 +11,6 @@ The functionalities of this app:
 * uploading images to the user' account
 * chat with friend
 
+# Screenshots
+
+https://github.com/IamKhuk/pictogram/blob/master/screenshots/Thumbnail.png
